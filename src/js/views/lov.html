@@ -1,0 +1,45 @@
+<br>
+<div id='lov'>
+  <div id='buttons-container' style="float: right; margin: 0px 30px 0px 0px">
+    <oj-button id='button1' class="oj-button-primary" on-oj-action='[[buttonClick]]'>Cancel</oj-button>
+    <oj-button id='button2' class="oj-button-confirm" on-oj-action='[[buttonClick]]'>Save</oj-button>
+  </div>
+  <br>
+  <br>
+  <br>
+  <oj-table id="table" aria-label="Departments Table" data='[[dataprovider]]' edit-mode='rowEdit' 
+                         columns='[{"headerText": "Lookup Type",
+                                    "headerStyle": "font-weight: bold;min-width: 7em; max-width: 7em; width: 7em",
+                                    "style": "min-width: 7em; max-width: 7em; width: 7em",
+                                    "sortProperty": "Type"},{"headerText": "Value",
+                                    "headerStyle": "font-weight: bold;min-width: 8em; max-width: 8em; width: 8em",
+                                    "style": "min-width: 8em; max-width: 8em; width: 8em",
+                                    "sortProperty": "DepartmentName"}]' row-renderer='[[rowRenderer]]'>
+  </oj-table>
+  <br><br>
+  To edit a row, double click on it or press Enter. Press Esc to return to readonly. F2 toggles between editable and readonly.
+  <br>
+  
+  <script type="text/html" id="rowTemplate">
+    <tr>
+        <td data-bind="text: Type">
+        <td data-bind="text: DepartmentName">
+        </td>
+    </tr>
+</script>
+<script type="text/html" id="editRowTemplate">
+    <tr>
+        <td>
+            <oj-select-one value='{{Type}}' data-oj-context>
+              <oj-option value="Sales">Sales</oj-option>
+              <oj-option value="HR">HR</oj-option>
+              <oj-option value="Marketing">Marketing</oj-option>
+              <oj-option value="Finance">Finance</oj-option>
+            </oj-select-one>
+        </td>
+        <td>
+            <oj-input-text id="it2" value="{{DepartmentName}}" data-oj-context></oj-input-text>
+        </td>
+    </tr>
+</script>
+</div>
